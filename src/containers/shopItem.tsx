@@ -10,9 +10,14 @@ function ShopItem(props: Props): React.ReactElement {
   const { name, price, type, img } = props.shopItem;
   return (
     <>
-      <div className="shopItem">
-        <img src={img} />
-        <p>{name}</p>
+      <div className="shop_item">
+        <img src={img} className="shop_img" />
+        <p>
+          {name}
+          <br />
+          <span>{price}원</span>
+        </p>
+        <button>추가</button>
       </div>
     </>
   );
