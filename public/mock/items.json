@@ -1,0 +1,29 @@
+{
+  "itemList": [
+    {
+      "name": "면도기세트",
+      "price": "8,900",
+      "type": "razor",
+      "color": "navy",
+      "img": "img/면도기세트_네이비.png"
+    },
+    {
+      "name": "리필 면도날",
+      "price": "9,600",
+      "type": "acc",
+      "img": "img/리필면도날.png"
+    },
+    {
+      "name": "쉐이빙젤",
+      "price": "4,500",
+      "type": "cosmetics",
+      "img": "img/스탠다드_쉐이빙젤_150ml.png"
+    },
+    {
+      "name": "애프터쉐이브",
+      "price": "3,900",
+      "type": "cosmetics",
+      "img": "img/(건성)여행용_애프터쉐이브_60ml.png"
+    }
+  ]
+}

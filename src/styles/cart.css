@@ -1,0 +1,22 @@
+.no_list {
+  display: block;
+  width: 179px;
+  height: 52px;
+  margin: 120px 90px auto;
+}
+
+.no_list > p {
+  font-style: normal; 
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 144%;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #1C1C1C;
+}
+
+.shop_item {
+  width: 328px;
+  height: 116px;
+  list-style: none;
+}

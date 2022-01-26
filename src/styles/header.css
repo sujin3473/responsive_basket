@@ -1,0 +1,19 @@
+.header {
+  height: 60px;
+  font-style: normal;
+}
+
+.header > span {
+  height: 24px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 60px;
+}
+
+.arrow_back {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  left: 4px;
+  top: 6px  
+}

@@ -1,22 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
+import Cart from './containers/cart';
+import Header from './components/header';
+
 function App(): React.ReactElement {
+  const [pageName, setPageName] = useState('장바구니');
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Header pageName={pageName} />
+        <Routes>
+          <Route path="/" element={<Cart />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
