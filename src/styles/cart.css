@@ -1,3 +1,8 @@
+hr {
+  margin: 28px 18px;
+  border-top: 1px solid #F0F0F0;
+}
+
 .no_list {
   display: block;
   height: 52px;
@@ -17,9 +22,10 @@
   text-align: left;
   display: flex;
   height: 116px;
-  padding: 0 16px;
+  margin: 0px 16px 13px;
   font-weight: 400;
   border-radius: 8px;
+  background-color: gray;
 }
 
 .shop_item > p {
@@ -39,8 +45,88 @@
   padding: 48px auto;
 }
 
+.shop_item > div {
+  width: 100%;
+}
+
 .shop_img {
   width: 76px;
   height: 76px;
   margin: 20px 18px;
+}
+
+.option_popup {
+  border-radius: 16px 16px 0px 0px;
+  position: fixed;
+  bottom: 0;
+  right:0;
+  display: block;
+  z-index: 99;
+  width: 100%;
+  height: 440px;
+  background-color: white;
+}
+
+.option_btn {
+  width: 328px;
+  height: 48px;
+  border-radius: 4px;
+  background-color: #0055B8;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 400;
+  position: absolute;
+  top: 85%;
+  left: 5%;
+}
+
+.option_btn > button {
+  margin: 48px auto;
+}
+
+.option_popup > button > span {
+  font-weight: 400;
+}
+
+.close_btn {
+  width: 34px;
+}
+
+.delete_btn {
+  width: 24px;
+  height: 24px;
+}
+
+.cart_item {
+  text-align: left;
+  display: flex;
+  height: 82px;
+  margin: 0px 16px 13px;
+  font-weight: 400;
+}
+
+.cart_img {
+  width: 78px;
+  height: 78px;
+}
+
+.order_btn {
+  background-color: #0055B8;
+  color: white;
+  border-radius: 8px;
+  height: 48px;
+  margin: 0 16px;
+}
+
+.delivery_phrase {
+  text-align: center;
+}
+
+.phrase {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  height: 26px;
+  margin: 60px auto 28px;
 }

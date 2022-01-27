@@ -1,3 +1,6 @@
 사용 라이브러리 :
-react-router-dom
-eslint / prettier
+  eslint / prettier
+  react-router-dom
+  react-redux
+  typesafe-actions
+

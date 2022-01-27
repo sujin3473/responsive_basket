@@ -2,28 +2,36 @@
   "itemList": [
     {
       "name": "면도기세트",
+      "des": "미드나이트 블루 핸들 + 면도날 2개입",
       "price": "8,900",
       "type": "razor",
       "color": "navy",
-      "img": "img/면도기세트_네이비.png"
+      "img": "img/면도기세트_네이비.png",
+      "amount": 1
     },
     {
       "name": "리필 면도날",
+      "des": "면도날 4개입",
       "price": "9,600",
       "type": "acc",
-      "img": "img/리필면도날.png"
+      "img": "img/리필면도날.png",
+      "amount": 1
     },
     {
       "name": "쉐이빙젤",
+      "des": "스탠다드 150ml",
       "price": "4,500",
       "type": "cosmetics",
-      "img": "img/스탠다드_쉐이빙젤_150ml.png"
+      "img": "img/스탠다드_쉐이빙젤_150ml.png",
+      "amount": 1
     },
     {
       "name": "애프터쉐이브",
       "price": "3,900",
+      "des": "스탠다드 60ml",
       "type": "cosmetics",
-      "img": "img/(건성)여행용_애프터쉐이브_60ml.png"
+      "img": "img/(건성)여행용_애프터쉐이브_60ml.png",
+      "amount": 1
     }
   ]
 }
