@@ -1,29 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/cart.css';
+import 'styles/cart.css';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../modules';
-import {
-  openOptionPopup,
-  closeOptionPopup,
-  setCartList,
-} from '../modules/cart';
+import { RootState } from 'modules';
+import { openOptionPopup, setCartList } from 'modules/cart';
 import { shopItemVO } from './types';
 
-import OptionPopup from '../components/optionPopup';
+import Header from 'components/header';
+import OptionPopup from 'components/optionPopup';
 import ShopItem from './shopItem';
 import CartItem from './cartItem';
 
 function Cart(): React.ReactElement {
   const [selectedList, setSelectedList] = useState<shopItemVO[]>([]);
   const [shopList, setShopList] = useState<shopItemVO[]>([]);
-  const [type, setType] = useState('');
   const [totalPrice, setTotalPrice] = useState(0);
+  const [shipping, setShipping] = useState(2500);
 
-  const { isOpenOptionPopup, cartList } = useSelector((state: RootState) => {
+  const { isOpenOptionPopup } = useSelector((state: RootState) => {
     return {
       isOpenOptionPopup: state.cart.isOpenOptionPopup,
-      cartList: state.cart.cartList,
     };
   });
 
@@ -44,13 +40,8 @@ function Cart(): React.ReactElement {
       });
   };
 
-  const openPopup = (type: string) => {
+  const openPopup = () => {
     dispatch(openOptionPopup());
-    setType(type);
-  };
-
-  const closePopup = () => {
-    dispatch(closeOptionPopup());
   };
 
   const addToCart = (shopItem: shopItemVO) => {
@@ -60,7 +51,24 @@ function Cart(): React.ReactElement {
 
   const deleteFromCart = (shopItem: shopItemVO) => {
     setSelectedList(selectedList.filter(item => item.name !== shopItem.name));
-    setShopList([...shopList, shopItem]);
+    setShopList([shopItem, ...shopList]);
+  };
+
+  const onIncrease = (id: number) => {
+    const newList = selectedList.map(item => {
+      if (id === item.id) return { ...item, amount: item.amount + 1 };
+      else return item;
+    });
+    setSelectedList(newList);
+  };
+
+  const onDecrease = (id: number) => {
+    const newList = selectedList.map(item => {
+      if (id === item.id && item.amount > 1)
+        return { ...item, amount: item.amount - 1 };
+      else return item;
+    });
+    setSelectedList(newList);
   };
 
   useEffect(() => {
@@ -73,29 +81,45 @@ function Cart(): React.ReactElement {
     };
   }, []);
 
-  // useEffect(() => {
-  //   setTotalPrice(
-  //     selectedList.reduce((acc, cur) => {
-  //       return acc + cur.price;
-  //     }, 0),
-  //   );
-  // }, []);
+  useEffect(() => {
+    if (selectedList.find(item => item.freeShipping) || totalPrice > 15000)
+      setShipping(0);
+    else setShipping(2500);
+  }, [selectedList, totalPrice]);
+
+  useEffect(() => {
+    setTotalPrice(
+      selectedList.reduce((acc, cur) => {
+        return acc + cur.price * cur.amount;
+      }, 0),
+    );
+  }, [selectedList]);
 
   return (
     <>
+      <Header />
       {selectedList.length > 0 ? (
         <div>
           {selectedList.map((item, i) => {
             return (
               <li key={i}>
-                <CartItem item={item} handleClickDelete={deleteFromCart} />
+                <CartItem
+                  item={item}
+                  handleClickDelete={deleteFromCart}
+                  handleOnIncrease={onIncrease}
+                  handleOnDecrease={onDecrease}
+                />
               </li>
             );
           })}
           <div>
-            <p>배송비: {}</p>
+            {shipping > 0 ? (
+              <p>배송비: {shipping.toLocaleString()}원</p>
+            ) : (
+              <p>배송비: 무료배송</p>
+            )}
             <p>
-              최종결제금액<span>{}원</span>
+              최종결제금액<span>{totalPrice.toLocaleString()}원</span>
             </p>
           </div>
           <div className="order_btn">주문하기</div>
@@ -116,9 +140,9 @@ function Cart(): React.ReactElement {
         </div>
       )}
       <ul>
-        {shopList.map((item, i) => {
+        {shopList.map(item => {
           return (
-            <li key={i} className="shop_item">
+            <li key={item.id} className="shop_item">
               <ShopItem
                 shopItem={item}
                 handlePopup={openPopup}
@@ -128,7 +152,7 @@ function Cart(): React.ReactElement {
           );
         })}
       </ul>
-      {isOpenOptionPopup && <OptionPopup onClose={closePopup} />}
+      {isOpenOptionPopup && <OptionPopup handleClickAdd={addToCart} />}
     </>
   );
 }

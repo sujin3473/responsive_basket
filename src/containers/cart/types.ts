@@ -1,10 +1,12 @@
 export interface shopItemVO {
+  id: number;
   name: string;
   des: string;
-  price: string;
+  price: number;
   type: string;
   color?: string;
   img: string;
   color_img?: string;
-  amount?: number;
+  amount: number;
+  freeShipping?: boolean;
 }

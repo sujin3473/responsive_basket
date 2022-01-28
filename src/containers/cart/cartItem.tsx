@@ -1,35 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { shopItemVO } from './types';
 
 interface Props {
   item: shopItemVO;
   handleClickDelete: (shopItem: shopItemVO) => void;
+  handleOnIncrease: (id: number) => void;
+  handleOnDecrease: (id: number) => void;
 }
 
 function CartItem(props: Props): React.ReactElement {
-  const [amount, setAmount] = useState(1);
-  const { name, price, des, img } = props.item;
-
-  const onIncrease = () => {
-    setAmount(amount + 1);
-  };
-
-  const onDecrease = () => {
-    if (amount > 1) setAmount(amount - 1);
-  };
+  const { id, name, price, des, img, amount } = props.item;
 
   return (
     <>
       <div className="cart_item">
         <img src={img} className="cart_img" />
         <p>{name} </p>
-        <p>{des}</p>
-        <span>{price}원</span>
+        <p className="des_text">{des}</p>
+        <span>{price.toLocaleString()}원</span>
         <div className="pm_btn">
-          <img src="img/Minus.png" onClick={onDecrease} />
+          <img src="img/Minus.png" onClick={() => props.handleOnDecrease(id)} />
           {amount}
-          <img src="img/Plus.png" onClick={onIncrease} />
+          <img src="img/Plus.png" onClick={() => props.handleOnIncrease(id)} />
         </div>
         <img
           src="img/Close.png"

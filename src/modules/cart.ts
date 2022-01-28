@@ -1,4 +1,4 @@
-import { shopItemVO } from '../containers/types';
+import { shopItemVO } from 'containers/cart/types';
 
 const OPEN_OPTION_POPUP = 'cart/OPEN_OPTION_POPUP' as const;
 const CLOSE_OPTION_POPUP = 'cart/CLOSE_OPTION_POPUP' as const;

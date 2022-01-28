@@ -89,6 +89,19 @@ hr {
   font-weight: 400;
 }
 
+.option_circle_wrap {
+  display: flex;
+  width: 132px;
+  margin: 0 auto;
+}
+
+.option_circle_wrap > div {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: auto 10px;
+}
+
 .close_btn {
   width: 34px;
 }
@@ -129,4 +142,8 @@ hr {
   line-height: 26px;
   height: 26px;
   margin: 60px auto 28px;
+}
+
+.des_text {
+  font-size: 12px;
 }
