@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import 'styles/order.css';
 
+import { shopItemVO } from 'containers/cart/types';
+
 import Header2 from 'components/header2';
 import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
+
+import OrderItem from './orderItem';
 
 function Order(): React.ReactElement {
   const { cartList, totalPrice } = useSelector((state: RootState) => {
@@ -14,15 +18,22 @@ function Order(): React.ReactElement {
   });
 
   const [cycle, setCycle] = useState(4);
-  const [itemList, setItemList] = useState(cartList);
+  const [is16w, setIs16w] = useState(false);
+  const [itemList, setItemList] = useState<shopItemVO[]>([]);
+  const [skipList, setSkipList] = useState<shopItemVO[]>([]);
 
   const week = ['일', '월', '화', '수', '목', '금', '토'];
   const now = useMemo(() => new Date(), []);
-  const nextTime = useMemo(() => new Date(), []);
-  nextTime.setDate(nextTime.getDate() + 7 * cycle);
+  const nextTime = useMemo(() => {
+    const today = new Date();
+    today.setDate(today.getDate() + 7 * cycle);
+    return today;
+  }, [cycle]);
 
   const handleToggle = (a: number) => {
     setCycle(a);
+    if (a === 16) setIs16w(true);
+    else setIs16w(false);
   };
 
   const formatDay = (d: Date) => {
@@ -37,10 +48,24 @@ function Order(): React.ReactElement {
     return date;
   };
 
+  const addToSkipList = (item: shopItemVO) => {
+    setSkipList([...skipList, item]);
+    setItemList(itemList.filter(i => i.name !== item.name));
+  };
+
+  const deleteFromSkipList = (item: shopItemVO) => {
+    setSkipList(skipList.filter(i => i.name !== item.name));
+    setItemList([item, ...itemList]);
+  };
+
+  useEffect(() => {
+    setItemList(cartList);
+  }, []);
+
   return (
     <>
       <Header2 quantity={cartList.length} totalPrice={totalPrice} />
-      <div>
+      <div className="order_wrap">
         <p className="cycle_txt">구독 주기</p>
         <div className="btn_wrap">
           <ul>
@@ -63,7 +88,7 @@ function Order(): React.ReactElement {
               12주마다
             </li>
             <li
-              className={'cycle_btn' + (cycle === 16 && 'active')}
+              className={'cycle_btn' + (cycle === 16 && ' active')}
               onClick={() => handleToggle(16)}
             >
               16주마다
@@ -80,11 +105,66 @@ function Order(): React.ReactElement {
             <span className="right">{formatDay(nextTime)}</span>
           </div>
         </div>
-        <img src="img/rectangle_bar.png" />
+        <img
+          src="img/rectangle_bar.png"
+          className="bar_img"
+          style={{ width: '100%', height: '20px' }}
+        />
         <div>
           <p className="cycle_txt">
             매번 <span style={{ fontWeight: '300' }}>배송</span>
           </p>
+        </div>
+        <ul>
+          {itemList.map(item => {
+            return (
+              <li key={item.id} className="order_item">
+                <OrderItem
+                  item={item}
+                  cycle={cycle}
+                  is16w={is16w}
+                  handleOnX1={deleteFromSkipList}
+                  handleOnX2={addToSkipList}
+                />
+              </li>
+            );
+          })}
+        </ul>
+        {skipList.length > 0 && (
+          <>
+            <div>
+              <p className="cycle_txt">
+                한번씩 걸러서 <span style={{ fontWeight: '300' }}>배송</span>
+              </p>
+            </div>
+            <ul>
+              {skipList.map(item => {
+                return (
+                  <li key={item.id} className="order_item">
+                    <OrderItem
+                      item={item}
+                      cycle={cycle}
+                      isX2={true}
+                      is16w={is16w}
+                      handleOnX1={deleteFromSkipList}
+                      handleOnX2={addToSkipList}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          </>
+        )}
+        <div
+          className="order_btn"
+          style={{
+            position: 'absolute',
+            bottom: '28px',
+            left: '0px',
+            right: '0px',
+          }}
+        >
+          다음
         </div>
       </div>
     </>

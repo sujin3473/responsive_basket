@@ -19,3 +19,13 @@ li {
 button {
   border: none;
 }
+
+.order_btn {
+  background-color: #0055B8;
+  color: white;
+  border-radius: 8px;
+  height: 48px;
+  margin: 0 16px;
+  font-size: 16px;
+  line-height: 48px;
+}

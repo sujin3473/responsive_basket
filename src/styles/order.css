@@ -33,12 +33,60 @@
 .date_txt {
   display: block;
   height: 22px;
+  font-size: 14px;
 }
 
 .left {
   float: left;
+  color: #838383;
 }
 
 .right {
   float: right;
+}
+
+.order_item {
+  height: 60px;
+  margin: 14px 0px 14px 2px;
+  display: flex;
+}
+
+.order_item > span {
+  line-height: 60px;
+  font-weight: 300;
+  font-size: 14px;
+  color: #1C1C1C;
+}
+
+.order_img {
+  width: 60px;
+  height: 60px;
+}
+
+.order_item > div {
+  margin: 12px 10px;
+  font-size: 12px;
+  line-height: 36px;
+  height: 36px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08);
+  background-color: #FAFAFA;
+  color: #838383;
+  display: flex;
+}
+
+.unchecked_btn {
+  height: 36px;
+  width: 76px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.checked_btn {
+  height: 36px;
+  width: 76px;
+  text-align: center;
+  border-radius: 8px;
+  color: #0055B8;
+  background-color: white;
 }
