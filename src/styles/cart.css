@@ -23,7 +23,6 @@ hr {
   display: flex;
   height: 116px;
   margin: 0px 16px 13px;
-  font-weight: 400;
   border-radius: 8px;
   background-color: gray;
 }
@@ -75,7 +74,6 @@ hr {
   color: white;
   font-size: 16px;
   text-align: center;
-  font-weight: 400;
   position: absolute;
   top: 85%;
   left: 5%;
@@ -83,10 +81,6 @@ hr {
 
 .option_btn > button {
   margin: 48px auto;
-}
-
-.option_popup > button > span {
-  font-weight: 400;
 }
 
 .option_circle_wrap {
@@ -116,7 +110,6 @@ hr {
   display: flex;
   height: 82px;
   margin: 0px 16px 13px;
-  font-weight: 400;
 }
 
 .cart_img {
@@ -137,7 +130,6 @@ hr {
 }
 
 .phrase {
-  font-weight: 400;
   font-size: 18px;
   line-height: 26px;
   height: 26px;

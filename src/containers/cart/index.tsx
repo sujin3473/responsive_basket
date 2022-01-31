@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import 'styles/cart.css';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'modules';
-import { openOptionPopup, setCartList } from 'modules/cart';
+import { openOptionPopup, setCartList, setFinalPrice } from 'modules/cart';
 import { shopItemVO } from './types';
 
 import Header from 'components/header';
@@ -24,6 +25,7 @@ function Cart(): React.ReactElement {
   });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const getData = () => {
     fetch('mock/items.json', {
@@ -71,27 +73,29 @@ function Cart(): React.ReactElement {
     setSelectedList(newList);
   };
 
+  const onClickOrder = () => {
+    dispatch(setCartList(selectedList));
+    dispatch(setFinalPrice(totalPrice));
+    navigate('/order');
+  };
+
   useEffect(() => {
     getData();
   }, []);
 
-  useEffect(() => {
-    return () => {
-      dispatch(setCartList(selectedList));
-    };
-  }, []);
-
+  // 무료배송 설정
   useEffect(() => {
     if (selectedList.find(item => item.freeShipping) || totalPrice > 15000)
       setShipping(0);
     else setShipping(2500);
   }, [selectedList, totalPrice]);
 
+  // 최종 결제금액 설정
   useEffect(() => {
     setTotalPrice(
       selectedList.reduce((acc, cur) => {
         return acc + cur.price * cur.amount;
-      }, 0),
+      }, 0) + shipping,
     );
   }, [selectedList]);
 
@@ -122,7 +126,9 @@ function Cart(): React.ReactElement {
               최종결제금액<span>{totalPrice.toLocaleString()}원</span>
             </p>
           </div>
-          <div className="order_btn">주문하기</div>
+          <div className="order_btn" onClick={onClickOrder}>
+            주문하기
+          </div>
           <div className="delivery_phrase">
             <p>1.5만원 이상 무료 배송</p>
             <p>평일 16시 이전 주문 시 당일 출고</p>

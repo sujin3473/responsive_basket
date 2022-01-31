@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 import Cart from './containers/cart';
-import Subscription from './containers/subscription';
+import Order from './containers/order';
 
 function App(): React.ReactElement {
   return (
@@ -11,7 +11,7 @@ function App(): React.ReactElement {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Cart />} />
-          <Route path="/subscription" element={Subscription} />
+          <Route path="/order" element={<Order />} />
         </Routes>
       </BrowserRouter>
     </div>
