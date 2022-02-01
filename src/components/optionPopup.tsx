@@ -14,7 +14,7 @@ function OptionPopup(props: Props): React.ReactElement {
   const [item, setItem] = useState({
     id: 1,
     name: '면도기세트',
-    des: '미드나이트 블루 핸들 + 면도날 2개입',
+    des: '미드나이트 네이비 핸들 + 면도날 2개입',
     price: 8900,
     type: 'razor',
     color: '미드나이트 네이비',
@@ -54,16 +54,14 @@ function OptionPopup(props: Props): React.ReactElement {
         style={{ display: isOpenOptionPopup ? 'block' : 'none' }}
       >
         <div className="popup_text">
-          <p>
-            <span>면도기 색상</span>을 선택해주세요
-          </p>
+          면도기 색상<span>을 선택해주세요</span>
           <img
             src="img/Close.png"
             onClick={() => dispatch(closeOptionPopup())}
             className="close_btn"
           />
         </div>
-        <img src={`img/image_${item.color}.png`}></img>
+        <img src={`img/image_${item.color}.png`} className="razor_img"></img>
         <div className="option_circle_wrap">
           <div
             style={{ backgroundColor: '#002F76' }}
@@ -78,11 +76,9 @@ function OptionPopup(props: Props): React.ReactElement {
             onClick={() => handleSetItem('슬레이트 그레이')}
           ></div>
         </div>
-        <button className="option_btn" onClick={handleClickDecide}>
-          <p>
-            <span>{item.color}</span> 선택하기
-          </p>
-        </button>
+        <div className="option_btn" onClick={handleClickDecide}>
+          {item.color} <span>선택하기</span>
+        </div>
       </section>
     </>
   );

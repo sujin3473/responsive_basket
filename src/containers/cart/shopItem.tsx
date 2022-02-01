@@ -20,7 +20,13 @@ function ShopItem(props: Props): React.ReactElement {
 
   return (
     <>
-      <div style={{ display: 'flex' }}>
+      <div
+        style={{
+          display: 'flex',
+          width: '100vw',
+          justifyContent: 'space-between',
+        }}
+      >
         <img src={img} className="shop_img" />
         <div className="shop_txt1">
           {name}

@@ -88,7 +88,7 @@ function Cart(): React.ReactElement {
     if (selectedList.find(item => item.freeShipping) || totalPrice > 15000)
       setShipping(0);
     else setShipping(2500);
-  }, [selectedList, totalPrice]);
+  }, [selectedList]);
 
   // 최종 결제금액 설정
   useEffect(() => {
@@ -103,7 +103,7 @@ function Cart(): React.ReactElement {
     <>
       <Header />
       {selectedList.length > 0 ? (
-        <div>
+        <div style={{ marginTop: '52px' }}>
           {selectedList.map((item, i) => {
             return (
               <li key={i}>
@@ -116,22 +116,33 @@ function Cart(): React.ReactElement {
               </li>
             );
           })}
-          <div>
-            {shipping > 0 ? (
-              <p>배송비: {shipping.toLocaleString()}원</p>
-            ) : (
-              <p>배송비: 무료배송</p>
-            )}
-            <p>
-              최종결제금액<span>{totalPrice.toLocaleString()}원</span>
-            </p>
+          <div className="delivery_txt_wrap">
+            <div className="cart_txt1">
+              <span className="f_left">배송비</span>
+              {shipping > 0 ? (
+                <>
+                  <span className="f_right">{shipping.toLocaleString()}원</span>
+                </>
+              ) : (
+                <span className="f_right">무료배송</span>
+              )}
+            </div>
+            <div className="cart_txt2">
+              <span className="f_left">최종결제금액</span>
+              <span className="f_right">{totalPrice.toLocaleString()}원</span>
+            </div>
           </div>
-          <div className="order_btn" onClick={onClickOrder}>
+          <div
+            className="order_btn"
+            onClick={onClickOrder}
+            style={{ marginTop: '20px' }}
+          >
             주문하기
           </div>
           <div className="delivery_phrase">
-            <p>1.5만원 이상 무료 배송</p>
-            <p>평일 16시 이전 주문 시 당일 출고</p>
+            1.5만원 이상 무료 배송
+            <br />
+            <span>평일 16시 이전 주문 시 당일 출고</span>
           </div>
           <div className="phrase">
             <p>함께하면 더 현명한 습관</p>
