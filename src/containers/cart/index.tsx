@@ -73,6 +73,7 @@ function Cart(): React.ReactElement {
     setSelectedList(newList);
   };
 
+  // 주문하기 버튼 클릭 - store저장, 페이지 이동
   const onClickOrder = () => {
     dispatch(setCartList(selectedList));
     dispatch(setFinalPrice({ itemPrice: totalPrice - shipping, shipping }));
@@ -85,19 +86,21 @@ function Cart(): React.ReactElement {
 
   // 무료배송 설정
   useEffect(() => {
+    console.log(selectedList.find(item => item.freeShipping));
+    console.log(totalPrice);
     if (selectedList.find(item => item.freeShipping) || totalPrice > 15000)
       setShipping(0);
     else setShipping(2500);
-  }, [selectedList]);
+  }, [totalPrice, selectedList]);
 
   // 최종 결제금액 설정
   useEffect(() => {
     setTotalPrice(
       selectedList.reduce((acc, cur) => {
         return acc + cur.price * cur.amount;
-      }, 0) + shipping,
+      }, 0),
     );
-  }, [selectedList, shipping]);
+  }, [selectedList]);
 
   return (
     <>
@@ -129,7 +132,9 @@ function Cart(): React.ReactElement {
             </div>
             <div className="cart_txt2">
               <span className="f_left">최종결제금액</span>
-              <span className="f_right">{totalPrice.toLocaleString()}원</span>
+              <span className="f_right">
+                {(totalPrice + shipping).toLocaleString()}원
+              </span>
             </div>
           </div>
           <div
