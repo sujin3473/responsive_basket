@@ -64,17 +64,43 @@ function OptionPopup(props: Props): React.ReactElement {
         <img src={`img/image_${item.color}.png`} className="razor_img"></img>
         <div className="option_circle_wrap">
           <div
-            style={{ backgroundColor: '#002F76' }}
-            onClick={() => handleSetItem('미드나이트 네이비')}
-          ></div>
+            className="option_circle_border border_navy"
+            style={{
+              borderColor:
+                item.color === '미드나이트 네이비' ? '#002F76' : 'white',
+            }}
+          >
+            <div
+              className="option_circle_circle"
+              style={{ backgroundColor: '#002F76' }}
+              onClick={() => handleSetItem('미드나이트 네이비')}
+            ></div>
+          </div>
           <div
-            style={{ backgroundColor: '#4296E0' }}
-            onClick={() => handleSetItem('사파이어 블루')}
-          ></div>
+            className="option_circle_border border_blue"
+            style={{
+              borderColor: item.color === '사파이어 블루' ? '#1888D9' : 'white',
+            }}
+          >
+            <div
+              className="option_circle_circle"
+              style={{ backgroundColor: '#4296E0' }}
+              onClick={() => handleSetItem('사파이어 블루')}
+            ></div>
+          </div>
           <div
-            style={{ backgroundColor: '#CBCBCB' }}
-            onClick={() => handleSetItem('슬레이트 그레이')}
-          ></div>
+            className="option_circle_border border_gray"
+            style={{
+              borderColor:
+                item.color === '슬레이트 그레이' ? '#CECECE' : 'white',
+            }}
+          >
+            <div
+              className="option_circle_circle"
+              style={{ backgroundColor: '#CBCBCB' }}
+              onClick={() => handleSetItem('슬레이트 그레이')}
+            ></div>
+          </div>
         </div>
         <div className="option_btn" onClick={handleClickDecide}>
           {item.color} <span>선택하기</span>
