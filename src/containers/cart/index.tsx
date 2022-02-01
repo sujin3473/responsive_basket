@@ -84,6 +84,12 @@ function Cart(): React.ReactElement {
     getData();
   }, []);
 
+  // 페이지 최초 진입시 store 초기화
+  useEffect(() => {
+    dispatch(setCartList(selectedList));
+    dispatch(setFinalPrice({ itemPrice: totalPrice - shipping, shipping }));
+  }, []);
+
   // 무료배송 설정
   useEffect(() => {
     console.log(selectedList.find(item => item.freeShipping));

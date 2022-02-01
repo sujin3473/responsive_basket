@@ -32,7 +32,7 @@ function Header2(props: Props): React.ReactElement {
     <div className="header2">
       <img src="img/WISLEY_LOGO.png" className="logo" />
       <img src="img/Cart.png" className="ico_cart" />
-      <label className="cart_label">{quantity}</label>
+      <div className="cart_label">{quantity}</div>
       <div className="price_txt">
         {(itemPrice + shipping).toLocaleString()}원
       </div>

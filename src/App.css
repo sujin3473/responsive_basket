@@ -20,6 +20,13 @@ button {
   border: none;
 }
 
+hr {
+  margin: 0px 16px;
+  height: 1px;
+  border: none;
+  background: #F0F0F0;
+}
+
 .order_btn {
   background-color: #0055B8;
   color: white;

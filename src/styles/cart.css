@@ -1,8 +1,3 @@
-hr {
-  margin: 28px 16px;
-  border-top: 1px solid #F0F0F0;
-}
-
 .no_list {
   display: block;
   height: 52px;
@@ -141,9 +136,7 @@ hr {
   display: flex;
   justify-content: space-between;
   height: 82px;
-  margin-left: 17px;
-  margin-right: 11px;
-  margin-bottom: 13px;
+  margin: 28px 11px 28px 17px;
   width: calc(100% - 24px);
 }
 
@@ -191,7 +184,7 @@ hr {
 }
 
 .delivery_txt_wrap {
-  margin-top: 52px;
+  margin-top: 28px;
 }
 
 .cart_txt1 {

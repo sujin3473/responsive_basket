@@ -35,21 +35,21 @@ function DropDown(props: Props): React.ReactElement {
             return <DropDownItem item={item} cycle={cycle} />;
           })}
           {skipList.map(item => {
-            return <DropDownItem item={item} cycle={cycle} />;
+            return <DropDownItem item={item} cycle={cycle * 2} />;
           })}
         </div>
         <div className="price_box">
-          <div className="date_txt">
-            <span className="left">상품 가격</span>
-            <span className="right">{itemPrice.toLocaleString()}원</span>
+          <div className="drop_txt1">
+            <span className="drop_left">상품 가격</span>
+            <span className="drop_right">{itemPrice.toLocaleString()}원</span>
           </div>
-          <div className="date_txt">
-            <span className="left">배송비</span>
-            <span className="right">{shipping.toLocaleString()}원</span>
+          <div className="drop_txt1">
+            <span className="drop_left">배송비</span>
+            <span className="drop_right">{shipping.toLocaleString()}원</span>
           </div>
-          <div className="date_txt">
-            <span className="left">오늘 결제 금액</span>
-            <span className="right">
+          <div className="drop_txt2">
+            <span className="drop_left">오늘 결제 금액</span>
+            <span className="drop_right">
               {(itemPrice + shipping).toLocaleString()}원
             </span>
           </div>

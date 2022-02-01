@@ -34,11 +34,11 @@ function OrderItem(props: Props): React.ReactElement {
       <img src={item.img} className="order_img" />
       <span>{item.name}</span>
       {is16w ? (
-        <div>
+        <div className="cycle_btn">
           <div className="checked_btn">{cycle}주에 한 번</div>
         </div>
       ) : (
-        <div>
+        <div className="cycle_btn">
           <div
             onClick={onClickX1}
             className={isX2 ? 'unchecked_btn' : 'checked_btn'}
