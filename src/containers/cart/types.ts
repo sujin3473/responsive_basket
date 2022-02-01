@@ -10,3 +10,8 @@ export interface shopItemVO {
   amount: number;
   freeShipping?: boolean;
 }
+
+export interface totalPrice {
+  itemPrice: number;
+  shipping: number;
+}

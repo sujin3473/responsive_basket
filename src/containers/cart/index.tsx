@@ -75,7 +75,7 @@ function Cart(): React.ReactElement {
 
   const onClickOrder = () => {
     dispatch(setCartList(selectedList));
-    dispatch(setFinalPrice(totalPrice));
+    dispatch(setFinalPrice({ itemPrice: totalPrice - shipping, shipping }));
     navigate('/order');
   };
 
@@ -97,7 +97,7 @@ function Cart(): React.ReactElement {
         return acc + cur.price * cur.amount;
       }, 0) + shipping,
     );
-  }, [selectedList]);
+  }, [selectedList, shipping]);
 
   return (
     <>
@@ -148,7 +148,7 @@ function Cart(): React.ReactElement {
       <ul>
         {shopList.map(item => {
           return (
-            <li key={item.id} className="shop_item">
+            <li key={item.id} className="shop_item shadow">
               <ShopItem
                 shopItem={item}
                 handlePopup={openPopup}

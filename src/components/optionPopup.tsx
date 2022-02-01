@@ -44,41 +44,47 @@ function OptionPopup(props: Props): React.ReactElement {
   };
 
   return (
-    <section
-      className="option_popup"
-      style={{ display: isOpenOptionPopup ? 'block' : 'none' }}
-    >
-      <div className="popup_text">
-        <p>
-          <span>면도기 색상</span>을 선택해주세요
-        </p>
-        <img
-          src="img/Close.png"
-          onClick={() => dispatch(closeOptionPopup())}
-          className="close_btn"
-        />
-      </div>
-      <img src={`img/image_${item.color}.png`}></img>
-      <div className="option_circle_wrap">
-        <div
-          style={{ backgroundColor: '#002F76' }}
-          onClick={() => handleSetItem('미드나이트 네이비')}
-        ></div>
-        <div
-          style={{ backgroundColor: '#4296E0' }}
-          onClick={() => handleSetItem('사파이어 블루')}
-        ></div>
-        <div
-          style={{ backgroundColor: '#CBCBCB' }}
-          onClick={() => handleSetItem('슬레이트 그레이')}
-        ></div>
-      </div>
-      <button className="option_btn" onClick={handleClickDecide}>
-        <p>
-          <span>{item.color}</span> 선택하기
-        </p>
-      </button>
-    </section>
+    <>
+      <div
+        className="dim1"
+        style={{ display: isOpenOptionPopup ? 'block' : 'none' }}
+      ></div>
+      <section
+        className="option_popup"
+        style={{ display: isOpenOptionPopup ? 'block' : 'none' }}
+      >
+        <div className="popup_text">
+          <p>
+            <span>면도기 색상</span>을 선택해주세요
+          </p>
+          <img
+            src="img/Close.png"
+            onClick={() => dispatch(closeOptionPopup())}
+            className="close_btn"
+          />
+        </div>
+        <img src={`img/image_${item.color}.png`}></img>
+        <div className="option_circle_wrap">
+          <div
+            style={{ backgroundColor: '#002F76' }}
+            onClick={() => handleSetItem('미드나이트 네이비')}
+          ></div>
+          <div
+            style={{ backgroundColor: '#4296E0' }}
+            onClick={() => handleSetItem('사파이어 블루')}
+          ></div>
+          <div
+            style={{ backgroundColor: '#CBCBCB' }}
+            onClick={() => handleSetItem('슬레이트 그레이')}
+          ></div>
+        </div>
+        <button className="option_btn" onClick={handleClickDecide}>
+          <p>
+            <span>{item.color}</span> 선택하기
+          </p>
+        </button>
+      </section>
+    </>
   );
 }
 

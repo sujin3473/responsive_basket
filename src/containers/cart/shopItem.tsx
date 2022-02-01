@@ -20,14 +20,16 @@ function ShopItem(props: Props): React.ReactElement {
 
   return (
     <>
-      <div className="shop_item">
+      <div style={{ display: 'flex' }}>
         <img src={img} className="shop_img" />
-        <p>
+        <div className="shop_txt1">
           {name}
           <br />
-          <span>{price.toLocaleString()}원</span>
-        </p>
-        <button onClick={handleClickAdd}>추가</button>
+          <span className="shop_txt2">{price.toLocaleString()}원</span>
+        </div>
+        <div className="add_btn" onClick={handleClickAdd}>
+          추가
+        </div>
       </div>
     </>
   );

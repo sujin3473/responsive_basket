@@ -16,13 +16,17 @@ function OrderItem(props: Props): React.ReactElement {
   const [isX2, setIsX2] = useState(props.isX2);
 
   const onClickX2 = () => {
-    setIsX2(true);
-    handleOnX2(item);
+    if (!isX2) {
+      setIsX2(true);
+      handleOnX2(item);
+    }
   };
 
   const onClickX1 = () => {
-    setIsX2(false);
-    handleOnX1(item);
+    if (isX2) {
+      setIsX2(false);
+      handleOnX1(item);
+    }
   };
 
   return (

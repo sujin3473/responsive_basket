@@ -4,6 +4,7 @@ import 'styles/order.css';
 import { shopItemVO } from 'containers/cart/types';
 
 import Header2 from 'components/header2';
+import DropDown from 'components/dropDown';
 import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
 
@@ -14,6 +15,7 @@ function Order(): React.ReactElement {
     return {
       cartList: state.cart.cartList,
       totalPrice: state.cart.totalPrice,
+      isOpenDropDown: state.cart.isOpenDropDown,
     };
   });
 
@@ -65,6 +67,7 @@ function Order(): React.ReactElement {
   return (
     <>
       <Header2 quantity={cartList.length} totalPrice={totalPrice} />
+      <DropDown itemList={itemList} skipList={skipList} cycle={cycle} />
       <div className="order_wrap">
         <p className="cycle_txt">구독 주기</p>
         <div className="btn_wrap">
@@ -105,13 +108,15 @@ function Order(): React.ReactElement {
             <span className="right">{formatDay(nextTime)}</span>
           </div>
         </div>
-        <img
-          src="img/rectangle_bar.png"
-          className="bar_img"
-          style={{ width: '100%', height: '20px' }}
-        />
+      </div>
+      <img
+        src="img/rectangle_bar.png"
+        className="bar_img"
+        style={{ width: '100%', height: '20px' }}
+      />
+      <div className="order_wrap">
         <div>
-          <p className="cycle_txt">
+          <p className="order_txt">
             매번 <span style={{ fontWeight: '300' }}>배송</span>
           </p>
         </div>
@@ -133,7 +138,7 @@ function Order(): React.ReactElement {
         {skipList.length > 0 && (
           <>
             <div>
-              <p className="cycle_txt">
+              <p className="order_txt">
                 한번씩 걸러서 <span style={{ fontWeight: '300' }}>배송</span>
               </p>
             </div>

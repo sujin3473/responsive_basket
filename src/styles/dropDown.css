@@ -1,0 +1,32 @@
+.drop_down_wrap {
+  height: 400px;
+  width: 100%;
+  z-index: 99;
+  position: fixed;
+  top: 60px;
+  right: 0;
+  background-color: white;
+}
+
+.drop_item {
+  margin: 24px 28px;
+}
+
+.drop_img {
+  height: 68px;
+  width: 68px;
+  margin: 2px 0px;
+}
+
+.price_box {
+  height: 114px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+
+.cart_item_list {
+  height: 286px;
+  overflow-y: auto;
+}
