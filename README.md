@@ -1,6 +1,1 @@
-사용 라이브러리 :
-  eslint / prettier
-  react-router-dom
-  react-redux
-  typesafe-actions
-
+와이즐리 컴퍼니 - 프론트엔드 과제
