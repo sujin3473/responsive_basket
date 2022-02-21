@@ -30,7 +30,8 @@ function Header2(props: Props): React.ReactElement {
 
   return (
     <div className="header2">
-      <img src="img/WISLEY_LOGO.png" className="logo" />
+      <img src="img/Arrow_back.png" className="arrow_back" />
+      <span>구독주기</span>
       <img src="img/Cart.png" className="ico_cart" />
       <div className="cart_label">{quantity}</div>
       <div className="price_txt">

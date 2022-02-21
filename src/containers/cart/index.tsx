@@ -92,8 +92,6 @@ function Cart(): React.ReactElement {
 
   // 무료배송 설정
   useEffect(() => {
-    console.log(selectedList.find(item => item.freeShipping));
-    console.log(totalPrice);
     if (selectedList.find(item => item.freeShipping) || totalPrice > 15000)
       setShipping(0);
     else setShipping(2500);
