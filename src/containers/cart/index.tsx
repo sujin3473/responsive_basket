@@ -110,7 +110,7 @@ function Cart(): React.ReactElement {
     <>
       <Header />
       {selectedList.length > 0 ? (
-        <div style={{ marginTop: '52px' }}>
+        <div style={{ marginTop: '45px' }}>
           {selectedList.map((item, i) => {
             return (
               <li key={i}>
@@ -149,9 +149,7 @@ function Cart(): React.ReactElement {
             주문하기
           </div>
           <div className="delivery_phrase">
-            1.5만원 이상 무료 배송
-            <br />
-            <span>평일 16시 이전 주문 시 당일 출고</span>
+            1.5만원 이상 또는 면도기세트 추가시 무료 배송
           </div>
           <div className="phrase">
             <p>함께하면 더 현명한 습관</p>

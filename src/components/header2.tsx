@@ -38,14 +38,14 @@ function Header2(props: Props): React.ReactElement {
         onClick={handleClickArrow}
       />
       <span>구독주기</span>
-      <img src="img/Cart.png" className="ico_cart" />
-      <div className="cart_label">{quantity}</div>
-      <img
-        src="img/Arrow_up.png"
-        className={'arrow_up' + (isOpen ? ' arrow_down' : '')}
-        onClick={handleArrow}
-        style={{}}
-      />
+      <div onClick={handleArrow}>
+        <img src="img/Cart.png" className="ico_cart" />
+        <div className="cart_label">{quantity}</div>
+        <img
+          src="img/Arrow_up.png"
+          className={'arrow_up' + (isOpen ? ' arrow_down' : '')}
+        />
+      </div>
     </div>
   );
 }

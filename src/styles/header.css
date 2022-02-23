@@ -1,5 +1,6 @@
 .header {
   height: 60px;
+  position: relative;
   font-style: normal;
 }
 
