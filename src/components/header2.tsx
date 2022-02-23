@@ -1,26 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import 'styles/header.css';
 
-import { totalPrice } from 'containers/cart/types';
-
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { openDropDown, closeDropDown } from 'modules/cart';
 
 interface Props {
   quantity: number;
-  totalPrice: totalPrice;
 }
 
 function Header2(props: Props): React.ReactElement {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { quantity, totalPrice } = props;
-  const { itemPrice, shipping } = totalPrice;
+  const { quantity } = props;
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleArrow = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleClickArrow = () => {
+    navigate(-1);
   };
 
   useEffect(() => {
@@ -29,14 +31,15 @@ function Header2(props: Props): React.ReactElement {
   }, [isOpen]);
 
   return (
-    <div className="header2">
-      <img src="img/Arrow_back.png" className="arrow_back" />
+    <div className="header">
+      <img
+        src="img/Arrow_back.png"
+        className="arrow_back"
+        onClick={handleClickArrow}
+      />
       <span>구독주기</span>
       <img src="img/Cart.png" className="ico_cart" />
       <div className="cart_label">{quantity}</div>
-      <div className="price_txt">
-        {(itemPrice + shipping).toLocaleString()}원
-      </div>
       <img
         src="img/Arrow_up.png"
         className={'arrow_up' + (isOpen ? ' arrow_down' : '')}

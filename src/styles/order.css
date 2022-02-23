@@ -10,7 +10,7 @@
   position: absolute;
   width: 24px;
   height: 24px;
-  right: 0px;
+  right: 8px;
   top: 18px;
 }
 
@@ -20,14 +20,14 @@
 
 .ico_cart {
   position: absolute;
-  right: 86px;
+  right: 20px;
   width: 48px;
   height: 48px;
   margin-top: 6px;
 }
 
 .order_wrap {
-  margin: 0px 16px;
+  margin: 28px 16px 0px;
 }
 
 .order_wrap2 {
@@ -39,8 +39,8 @@
 .cart_label {
   display: inline-block;
   position: absolute;
-  top: 17px;
-  right: 94.27px;
+  top: 15px;
+  right: 28px;
   width: 16px;
   height: 16px;
   line-height: 16px;
@@ -48,7 +48,7 @@
   font-size: 10px;
   color: white;
   text-align: center;
-  background-color: #0055B8;
+  background-color: #008B8B;
 }
 
 .cycle_txt {
@@ -92,9 +92,9 @@
 }
 
 .active {  
-  color: #0055B8;
-  border-color: #0055B8;
-  border: 1px solid #0055B8;
+  color: #008B8B;
+  border-color: #008B8B;
+  border: 1px solid #008B8B;
 }
 
 .date_txt {
@@ -159,7 +159,7 @@
   width: 76px;
   text-align: center;
   border-radius: 8px;
-  color: #0055B8;
+  color: #008B8B;
   background-color: white;
 }
 
