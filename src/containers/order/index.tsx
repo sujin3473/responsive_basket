@@ -68,7 +68,7 @@ function Order(): React.ReactElement {
 
   return (
     <>
-      <Header2 quantity={cartList.length} totalPrice={totalPrice} />
+      <Header2 quantity={cartList.length} />
       <DropDown itemList={itemList} skipList={skipList} cycle={cycle} />
       <div className="order_wrap">
         <div className="cycle_txt">구독 주기</div>
